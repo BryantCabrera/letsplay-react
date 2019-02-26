@@ -60,10 +60,10 @@ As a user, I want a responsive navigation bar because I want access to appropria
 
 
 ## F. Github workflow
-1.	Link to repo: [https://github.com/BryantCabrera/relocater](https://github.com/BryantCabrera/relocater).  
+1.	Link to repo: [https://github.com/BryantCabrera/letsplay-react](https://github.com/BryantCabrera/letsplay-react).  
 2.	On your personal repo (NOT the General Assembly) enterprise, log in.  then click link above and fork the repo.  Make sure the repo is in your personal GitHub (go to your personal GitHub account and the project repo “relocater” should be there).  Then, from YOUR PERSONAL FORK, clone it to your local repo.
     1.	$git clone {without curly braces, put the clone link here}
-    2.  $git remote add upstream https://github.com/BryantCabrera/relocater
+    2.  $git remote add upstream https://github.com/BryantCabrera/letsplay-react
 3.	In terminal, cd to the project repo, open it, and $git checkout -b {without these curly braces, put your first name here in all lower case letters}
     1.	EXAMPLE:  $git checkout -b bryant
     2.	**any other time you are changing back to your branch, you don’t need to type the “-b” part anymore
