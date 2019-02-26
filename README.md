@@ -31,31 +31,17 @@ As a user, I want a responsive navigation bar because I want access to appropria
 > Front-End
     
     1. React
-    2. BEM
-    3. Google fonts
-    4. flaticon.com
+    2. React-bootstrap
+    3. BEM
+    4. Google fonts
     5. fetch
 
 > Back-End
 
-    1. node
-    2. express
-    3. mongoose
-    4. mongoDB
-    5. axios
-    6. xml2json
+    1. flask
+    2. PostgreSQL
+    3. axios
 
-> APIs
-    
-    1. socrata
-    2. zillow
-    3. bestplaces.net
-
-> Data Visualization
-  
-    1. d3-geo
-    2. topo-json-client
-    3. recharts
 
 > Authentication
     
@@ -68,7 +54,6 @@ As a user, I want a responsive navigation bar because I want access to appropria
     
     1. Adobe XD
     2. Adobe Photoshop
-    3. trello
 
 
 ## E. Getting Started
