@@ -43,8 +43,10 @@ class Register extends Component {
         }
 
         const parsedResponse = await response.json();
-
         console.log(parsedResponse);
+        if (parsedResponse){
+          this.props.history.push(`/profile/${parsedResponse.id}/edit`);
+        }
 
       } catch (err) {
         console.log(err, ' this is error from Registers')
