@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
@@ -47,13 +47,13 @@ class App extends Component {
     }
   render() {
     return (
-      <Router>
+      <Switch>
       <div className="App">
         <Navbar />
          <Route exact path="/" component={ Landing } />
          <div className="container">
            <Route exact path="/login" component= { Login } />
-           <Route exact path="/register" component= { Register } />
+           <Route exact path="/register" component= {(props) =>  <Register {...props} history={this.props.history} /> } />
          </div>
          <Route exact path="/boardgames" component={ Boardgame } boardgames={this.state.boardgames} />
          <Route exact path="/boardgames/:id" component={ OneBoardGame } />
@@ -62,9 +62,9 @@ class App extends Component {
          <Route exact path="/profile/:id/edit" component={ EditProfile } />
        <Footer />
      </div>
-    </Router>
+    </Switch>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

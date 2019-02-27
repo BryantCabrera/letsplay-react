@@ -6,7 +6,7 @@ class Landing extends Component {
   render() {
     return (
 <div>
-    <div className="landing">
+    <div className="layout__landing">
     <div className="dark-overlay landing-inner text-light">
       <div className="container">
         <div className="row">
