@@ -7,10 +7,10 @@ class EditProfle extends Component {
         console.log('i am clicked update')
             }
     
-    handleInput = (e) => {
+    onChange = (e) => {
         this.setState({
-            [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value
-        });
+            [e.target.name] : e.target.value
+        })
     }
 
     render() {
@@ -20,18 +20,18 @@ class EditProfle extends Component {
             <div className="row">
                 <div className="col-md-8 m-auto">
                 <h1 className="display-4 text-center">Edit Profile</h1>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.profileUpdate}>
                     <div className="form-group">
-                    <input type="text" className="form-control form-control-lg" placeholder="Location" name="location" />
+                    <input type="text" className="form-control form-control-lg" placeholder="Location" name="location" onChange={this.onChange}/>
                     </div>
                     <div className="form-group">
-                    <input type="text" className="form-control form-control-lg" placeholder="Profile Picture URL" name="profilepicture" />
+                    <input type="text" className="form-control form-control-lg" placeholder="Profile Picture URL" name="profilepicture" onChange={this.onChange}/>
                     </div>
                     <div className="form-group">
-                    <input type="text" className="form-control form-control-lg" placeholder="Add Owned Boardgames" name="ownedGames" />
+                    <input type="text" className="form-control form-control-lg" placeholder="Add Owned Boardgames" name="ownedGames" onChange={this.onChange}/>
                     </div>
                     <div className="form-group">
-                    <input type="text" className="form-control form-control-lg" placeholder="Add Boardgames I've Played" name="playedGames" />
+                    <input type="text" className="form-control form-control-lg" placeholder="Add Boardgames I've Played" name="playedGames" onChange={this.onChange}/>
                     </div>
                     <input type="submit" className="btn btn-info btn-block mt-4" />
                 </form>
