@@ -17,7 +17,12 @@ import './App.css';
 
 class App extends Component {
     state = {
-        boardgames: []
+      username:'',
+      email:'',
+      password:'',
+      playedGames: [],
+      ownedGames: [],
+      boardgames: []
     }
     componentDidMount () {
         this.getBoardgames();
