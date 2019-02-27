@@ -32,13 +32,13 @@ class Register extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
+              <h1 className="display-4 text-center">Register</h1>
               <p className="lead text-center">Create your Let's Play! account</p>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input type="text" 
                     className="form-control form-control-lg"
-                    placeholder="Name" 
+                    placeholder="Username" 
                     name="name" 
                     value={this.state.name} 
                     onChange={this.onChange} />

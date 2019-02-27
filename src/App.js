@@ -6,10 +6,37 @@ import Footer from './components/Layout/Footer';
 import Landing from './components/Layout/Landing';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
+import Boardgame from './components/Boardgame/Boardgame';
+import CreateProfile from './components/Profile/CreateProfile/CreateProfile';
+import EditProfile from './components/Profile/EditProfile/EditProfile';
+import ProfileShowPage from './components/Profile/ProfileShowPage/ProfileShowPage';
+
 
 import './App.css';
 
 class App extends Component {
+    state = {
+        boardgames: []
+    }
+    componentDidMount () {
+        this.getBoardgames();
+    } 
+
+    getBoardgames = async () => {
+        try {
+            const response = await fetch('https://bgg-json.azurewebsites.net/thing/13');
+            console.log(response, 'getBoardgames response');
+            if (!response.ok){
+                throw Error(response.statusText)
+            }
+            const boardgamesParsed = await response.json();
+            this.setState({
+                boardgames: boardgamesParsed
+              })
+        } catch (err) {
+            console.log(err, 'error in catch block')
+        }
+    }
   render() {
     return (
       <Router>
@@ -20,6 +47,12 @@ class App extends Component {
            <Route exact path="/login" component= { Login } />
            <Route exact path="/register" component= { Register } />
          </div>
+         <Route exact path="/boardgames" component={ Boardgame } boardgames={this.state.boardgames} />
+         <Route exact path="/profile" component={ CreateProfile } />
+         <Route exact path="/profile/:id" component={ ProfileShowPage } />
+         <Route exact path="/profile/:id/edit" component={ EditProfile } />
+
+
        <Footer />
      </div>
     </Router>
