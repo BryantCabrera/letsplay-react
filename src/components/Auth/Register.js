@@ -6,7 +6,7 @@ class Register extends Component {
       name: '',
       email: '',
       password: '',
-      password2: '',
+      verify_password: '',
   }
 
   onChange = (e) => {
@@ -14,14 +14,45 @@ class Register extends Component {
           [e.target.name] : e.target.value
       })
     }
-  onSubmit = (e) => {
+
+  onSubmit = async (e) => {
       e.preventDefault();
+
       const newUser = {
-          name: this.state.name,
-          email: this.state.email,
-          password: this.state.password,
-          password2: this.state.password
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+        verify_password: this.state.verify_password
+      };
+
+      console.log(JSON.stringify(newUser));
+
+      try {
+        const response = await fetch('http://localhost:8000/api/v1/users', {
+          method: 'POST',
+          credentials: 'include',
+          body: JSON.stringify(newUser),
+          // mode: 'no-cors', do NOT need
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if(!response.ok) {
+          throw Error()
+        }
+
+        const parsedResponse = await response.json();
+
+        console.log(parsedResponse);
+
+      } catch (err) {
+        console.log(err, ' this is error from Registers')
       }
+
+      // axios.post('http://localhost:8000/api/v1/users', newUser)
+      //   .then(res => console.log(res, ' this is res from Register'))
+      //   .catch(err => console.log(err, ' this is err from Register'));
     }
       //axios.post('/api/auth/register', newUser)
         
@@ -64,8 +95,8 @@ class Register extends Component {
                   <input type="password" 
                    className="form-control form-control-lg"
                    placeholder="Confirm Password" 
-                   name="password2"
-                   value={this.state.password2} 
+                   name="verify_password"
+                   value={this.state.verify_password} 
                    onChange={this.onChange} />
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />

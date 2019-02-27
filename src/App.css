@@ -2,7 +2,7 @@ img {
   width: 100%;
 }
 
-.landing {
+.layout__landing {
   position: relative;
   background: url('./img/boardgame.jpg') no-repeat;
   background-size: cover;
