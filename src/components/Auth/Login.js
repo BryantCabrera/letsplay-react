@@ -11,10 +11,43 @@ class Login extends Component {
         })
 
     }
-    onSubmit = (e) => {
+
+    onSubmit = async (e) => {
         e.preventDefault();
-        console.log('clicked login')
+        
+        const loggedUser = {
+            email: this.state.email,
+            password: this.state.password
+        };
+
+        console.log(JSON.stringify(loggedUser, ' this is loggedUser'));
+
+        try {
+            const response = await fetch('http://localhost:8000/api/v1/users/login', {
+                method: 'POST',
+                credentials: 'include',
+                body: JSON.stringify(loggedUser),
+                // mode: 'no-cors', do NOT need
+                headers: {
+                'Content-Type': 'application/json'
+                }
+            });
+
+            // if(!response.ok) {
+            //     throw Error()
+            // }
+
+            const parsedResponse = await response.json();
+            if (parsedResponse){
+                console.log(parsedResponse, ' this is parsedResponse loggedin');
+                // this.props.history.push(`/profile/${parsedResponse.id}/edit`);
+            }
+
+        } catch (err) {
+            console.log(err, ' this is error from Login.js')
+        }
     }
+
   render() {
     return (
     <div className="login">

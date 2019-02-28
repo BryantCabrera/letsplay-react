@@ -3,10 +3,10 @@ import axios from 'axios';
 
 class Register extends Component {
   state = {
-      name: '',
-      email: '',
-      password: '',
-      verify_password: '',
+    name: '',
+    email: '',
+    password: '',
+    verify_password: '',
   }
 
   onChange = (e) => {
