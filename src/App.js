@@ -24,12 +24,14 @@ class App extends Component {
     password:'',
     playedGames: [],
     ownedGames: [],
-    boardgames: []
+    boardgames: [],
+   
   }
 
   componentDidMount () {
-      this.getBoardgames();
-  } 
+    this.getBoardgames();
+  }
+
 
   getBoardgames = async () => {
     try {
@@ -96,7 +98,7 @@ class App extends Component {
          </div>
          <Route exact path="/boardgames" component={ Boardgame } boardgames={boardgames} />
          <Route exact path="/boardgames/:id" component={ OneBoardGame } />
-         <Route exact path="/profiles" component={ AllProfiles } />
+         <Route exact path="/profiles" component= { AllProfiles }/>
          <Route exact path="/profile" component={ CreateProfile } />
          <Route exact path="/profile/:id" component={ ProfileShowPage } />
          <Route exact path="/profile/:id/edit" component={ EditProfile } />

@@ -5,36 +5,60 @@ class AllProfiles extends Component {
   state = {
       users: []
   }
-
-  componentDidMount() {
-      console.log('these profiles are mounting')
-      axios('http://localhost:8000/api/v1/users')
-          .then(res => {
-              console.log(res)
-              this.setState({
-                  users: res.data.data
-              })
-          }) 
+  componentDidMount () {
+    this.getProfiles();
   }
-  render () {
-      const allProfiles = this.state.users.map((user) => {
-          return (
-              <div>
-                 {user.id}
-              </div>
-          )
+
+  getProfiles = async () => {
+
+    try {
+      const response = await fetch('http://localhost:8000/api/v1/users', {
+        method: 'GET',
+        credentials: 'include',
+        // mode: 'no-cors', do NOT need
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if(!response.ok) {
+        throw Error()
+      }
+
+      const parsedResponse = await response.json();
+      this.setState({
+        users : parsedResponse.users
       })
+    } catch (err) {
+      console.log(err, ' this ERROR ALL PROFILEs')
+    }
+  }
+
+ 
+  
+
+  render () {
+    const { users } = this.state;
+    let profile = users.map(user => {
       return (
-          <div className="show-container">
-                  <ul>
-                  <h1>All Profiles</h1>
-                      {allProfiles}
-                  </ul>
-          
-          </div>
+        <div class="card" style={{width: '18rem'}}>
+        <img class="card-img-top" src="..." alt="Card image cap"/>
+        <div class="card-body">
+          <h5 class="card-title">{user.name}</h5>
+          <p class="card-text">{user.email}</p>
+          <a href="#" class="btn btn-primary">Visit Profile</a>
+        </div>
+       </div>
+      )
+    })
+      return (
+      <div className="show-container">
+      <h1>All Profiles</h1>
+          {profile}
+     
+      </div>
+           
       )
   }
-}
-
-
+}  
 export default AllProfiles
