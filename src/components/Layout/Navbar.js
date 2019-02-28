@@ -32,6 +32,11 @@ class Navbar extends Component {
                     className="nav-link" to="/boardgames"> Boardgames
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link 
+                    className="nav-link" to="/profiles"> Profiles
+                </Link>
+              </li>
             </ul>
           {this.props.loggedUser && this.props.loggedUser.id ? (<ul className="navbar-nav ml-auto">
               <li className="nav-item">

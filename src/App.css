@@ -2,6 +2,41 @@ img {
   width: 100%;
 }
 
+/* PROFILE/ALLPROFILES COMPONENT BEGIN */
+.allprofiles__row {
+ text-align: center;
+ background-color: black;
+}
+
+.allprofiles_card-body {
+  font-family: 'Montserrat';
+  text-align: center;
+}
+
+.allprofiles__name {
+  margin-top: 15px;
+}
+.card {
+  border: 1px solid black;
+  display: inline-block;
+  margin: 10px;
+}
+
+.card:hover{
+  transform: scale(1);
+  box-shadow: 5px 20px 30px rgba(0,0,0,0.5);
+}
+
+.btn {
+  margin-bottom: 20px;
+}
+
+
+/* PROFILE/ALLPROFILES END */
+
+
+
+/* LAYOUT- LANDING PAGE BEGIN */
 .layout__landing {
   position: relative;
   background: url('./img/boardgame.jpg') no-repeat;
@@ -16,6 +51,7 @@ img {
   padding-top: 80px;
 }
 
+/* LAYOUT- LANDING PAGE END */
 .dark-overlay {
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;

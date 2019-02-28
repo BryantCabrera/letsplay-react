@@ -10,7 +10,7 @@ export default function ProfileShowPage() {
             <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">ID's Profile Page</h1>
             <form>
-               <img src="https://i.imgur.com/ebQByqW.jpg"/>
+               <img src=""/>
                 <div className="form-group">
                 <input type="text" className="form-control form-control-lg" placeholder="Location" name="location"/>
                 </div>
