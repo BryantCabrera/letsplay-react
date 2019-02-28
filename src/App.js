@@ -9,6 +9,7 @@ import Login from './components/Auth/Login';
 import Boardgame from './components/Boardgame/AllBoardGames/Boardgame';
 import OneBoardGame from './components/Boardgame/OneBoardGame/OneBoardGame';
 import CreateProfile from './components/Profile/CreateProfile/CreateProfile';
+import AllProfiles from './components/Profile/AllProfiles/AllProfiles';
 import EditProfile from './components/Profile/EditProfile/EditProfile';
 import ProfileShowPage from './components/Profile/ProfileShowPage/ProfileShowPage';
 
@@ -16,7 +17,7 @@ import ProfileShowPage from './components/Profile/ProfileShowPage/ProfileShowPag
 import './App.css';
 
 class App extends Component {
-    state = {
+  state = {
       username:'',
       email:'',
       password:'',
@@ -24,20 +25,17 @@ class App extends Component {
       ownedGames: [],
       boardgames: []
     }
-    componentDidMount () {
+  componentDidMount () {
         this.getBoardgames();
     } 
 
-    getBoardgames = async () => {
+  getBoardgames = async () => {
         try {
-            const response = await fetch('https://bgg-json.azurewebsites.net/thing/');
+            const response = await fetch('https://bgg-json.azurewebsites.net/thing/13');
             if (!response.ok){
                 throw Error(response.statusText)
             }
             const boardgamesParsed = await response.json();
-            console.log(boardgamesParsed.description)
-            
-
             this.setState({
                 boardgames: boardgamesParsed
               })
@@ -45,7 +43,9 @@ class App extends Component {
             console.log(err, 'error in catch block')
         }
     }
+  
   render() {
+    const { boardgames } = this.state;
     return (
       <Switch>
       <div className="App">
@@ -55,8 +55,9 @@ class App extends Component {
            <Route exact path="/login" component= { Login } />
            <Route exact path="/register" component= {(props) =>  <Register {...props} history={this.props.history} /> } />
          </div>
-         <Route exact path="/boardgames" component={ Boardgame } boardgames={this.state.boardgames} />
+         <Route exact path="/boardgames" component={ Boardgame } boardgames={boardgames} />
          <Route exact path="/boardgames/:id" component={ OneBoardGame } />
+         <Route exact path="/profiles" component={ AllProfiles } />
          <Route exact path="/profile" component={ CreateProfile } />
          <Route exact path="/profile/:id" component={ ProfileShowPage } />
          <Route exact path="/profile/:id/edit" component={ EditProfile } />
