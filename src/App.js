@@ -18,41 +18,80 @@ import './App.css';
 
 class App extends Component {
   state = {
-      username:'',
-      email:'',
-      password:'',
-      playedGames: [],
-      ownedGames: [],
-      boardgames: []
-    }
+    loggedUser: {},
+    username:'',
+    email:'',
+    password:'',
+    playedGames: [],
+    ownedGames: [],
+    boardgames: []
+  }
+
   componentDidMount () {
-        this.getBoardgames();
-    } 
+      this.getBoardgames();
+  } 
 
   getBoardgames = async () => {
-        try {
-            const response = await fetch('https://bgg-json.azurewebsites.net/thing/13');
-            if (!response.ok){
-                throw Error(response.statusText)
-            }
-            const boardgamesParsed = await response.json();
-            this.setState({
-                boardgames: boardgamesParsed
-              })
-        } catch (err) {
-            console.log(err, 'error in catch block')
-        }
+    try {
+      const response = await fetch('https://bgg-json.azurewebsites.net/thing/13');
+      if (!response.ok){
+        throw Error(response.statusText)
+      }
+      const boardgamesParsed = await response.json();
+      this.setState({
+        boardgames: boardgamesParsed
+      })
+    } catch (err) {
+      console.log(err, 'error in catch block')
     }
+  }
+
+  loginUser = (user) => {
+    this.setState({
+      loggedUser: user
+    });
+  }
+
+  logoutUser = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/api/v1/users/logout', {
+        method: 'GET',
+        credentials: 'include',
+        // body: JSON.stringify(loggedUser),
+        // mode: 'no-cors', do NOT need
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      });
+
+        // if(!response.ok) {
+        //     throw Error()
+        // }
+
+      const parsedResponse = await response.json();
+      if (parsedResponse) {
+        console.log(parsedResponse, ' this is parsedResponse loggedout');
+        this.props.history.push(`/`);
+      }
+
+      this.setState({
+        loggedUser: {}
+      });
+
+    } catch (err) {
+      console.log(err, ' this is error from Login.js')
+    }
+  }
   
   render() {
     const { boardgames } = this.state;
     return (
       <Switch>
       <div className="App">
-        <Navbar />
+        <Navbar loggedUser={this.state.loggedUser} logoutUser={this.logoutUser} />
          <Route exact path="/" component={ Landing } />
          <div className="container">
-           <Route exact path="/login" component= { Login } />
+           <Route exact path="/login" component= {(props) =>  <Login {...props} history={this.props.history} loginUser={this.loginUser} /> } />
            <Route exact path="/register" component= {(props) =>  <Register {...props} history={this.props.history} /> } />
          </div>
          <Route exact path="/boardgames" component={ Boardgame } boardgames={boardgames} />
