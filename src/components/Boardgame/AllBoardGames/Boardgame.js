@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom'
+import Searchbar from '../../Searchbar/Searchbar';
 class Boardgame extends Component {
   state = {
     boardGames: [],
-    user: {}
+    user: {},
+    searchBar:''
   }
 
   componentDidMount () {
@@ -12,6 +14,27 @@ class Boardgame extends Component {
       user : this.props.user
     })
   }
+
+  clickSearch = (e) => {
+    e.preventDefault()
+    let filteredBoardGames = this.state.boardGames.filter(game => game.title.includes(this.state.searchBar))
+    console.log(this.state.boardGames)
+
+    this.setState({
+        boardGames : filteredBoardGames
+    })
+    }
+
+    resetHandler = () => {
+      this.getBoardgames();
+  }
+
+  changeHandler = (e) => {
+    this.setState({
+        ...this.state,
+        [e.target.name] : e.target.value
+        });
+    }
 
   getBoardgames = async () => {
     try {
@@ -35,15 +58,7 @@ class Boardgame extends Component {
     }
   }
 
-
-
   addToOwnedGames = async (e) => {
-    // console.log('OWNED GAMES CLICKED')
-    // // need to know whos logged in
-    // console.log(this.state.user.id);
-    // // need to know the game Id
-    // console.log(e.target.id, 'THIS IS TARGET ID FROM BOARDGAMEJS');
-
     const userboardgame = {
       user: this.state.user.id,
       boardgame: parseInt(e.target.id)
@@ -78,27 +93,22 @@ class Boardgame extends Component {
     // replace with "Already added to boardgame favorites"
   }
 
-  addToWishlist = () => {
-    console.log('WISHLIST GAMES CLICKED')
-  }
-
   render () {
     const { boardGames, user } = this.state;
-    console.log(this.state, 'THIS IS THIS.STATE FROM BOARDGAME.JS')
-    console.log(user, 'THIS IS USER FROM BOARDGAME.JS');
-    console.log(user == {} , 'THIS IS USER FROM BOARDGAME.JS');
     return(
       <div className="allprofiles__row">
+        <Searchbar getBoardgames={this.getBoardgames} search={this.clickSearch} reset={this.resetHandler} change={this.changeHandler} searchBar={this.state.searchBar}/>
         {boardGames.map((boardGame, index) => {
           return (
             <div class="card" key={index} style={{width: '15rem'}}>
-              <img class="card-img-top" src={boardGame.img_url} alt="board image"/>
+            <Link to={`/boardgames/${boardGame.id}`}> 
+            <img class="card-img-top" src={boardGame.img_url} alt="boardgame"/>
+            </Link>
               <div class="allprofiles_card-body">
                 <h5 class="allprofiles__name" >{boardGame.title}</h5>
-                <Link to={`/boardgames/${boardGame.id}`} class="btn btn-primary">Visit Game </Link>
 
-                {user.id ?  <div><button onClick={this.addToOwnedGames} id={boardGame.id} class="btn btn-success">Add to Owned Games</button>
-                <button onClick={this.addToWishlist} class="btn btn-warning">Add to Wishlist</button> </div>: <div></div> }
+                {user.id ?  <div><button onClick={this.addToOwnedGames} id={boardGame.id} class="btn btn-primary">Add to Owned Games</button>
+                </div>: <div></div> }
               
               </div>
             </div>

@@ -37,7 +37,7 @@ render(){
   return (
     <div>
       <div class="card mb-3">
-      <img class="card-img-top" src={boardGame.img_url} alt="boardgame image"/>
+      <img class="card-img" src={boardGame.img_url} alt="boardgame"/>
         <div class="OneBoardGame__card-body">
          <h1 class="card-title">{boardGame.title}</h1>
          <p class="card-text">Designer: {boardGame.designer} </p>

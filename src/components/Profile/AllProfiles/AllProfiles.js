@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import Searchbar from '../../Searchbar/Searchbar';
 class AllProfiles extends Component {
   state = {
       users: []
@@ -7,6 +8,8 @@ class AllProfiles extends Component {
   componentDidMount () {
     this.getProfiles();
   }
+
+
 
   getProfiles = async () => {
 
@@ -32,12 +35,34 @@ class AllProfiles extends Component {
       console.log(err, ' this ERROR ALL PROFILEs')
     }
   }
+
+  clickSearch = (e) => {
+    e.preventDefault()
+    let filteredUsers = this.state.users.filter(game => game.name.includes(this.state.searchBar))
+    console.log(this.state.users)
+
+    this.setState({
+        users : filteredUsers
+    })
+    }
+
+    resetHandler = () => {
+      this.getProfiles();
+  }
+
+  changeHandler = (e) => {
+    this.setState({
+        ...this.state,
+        [e.target.name] : e.target.value
+        });
+    }
+
   render () {
     const { users } = this.state;
     let profile = users.map(user => {
       return (
         <div class="card" style={{width: '15rem'}}>
-          <img class="card-img-top" src={user.img_url} alt="user profile picture"/>
+          <img class="card-img-top" src={user.img_url} alt="user profile"/>
           <div class="allprofiles_card-body">
             <h5 class="allprofiles__name" >{user.name}</h5>
             <p class="allprofiles__email" >{user.email}</p>
@@ -50,6 +75,7 @@ class AllProfiles extends Component {
       return (
         <div className="show-container">
           <div className="allprofiles__row">
+          <Searchbar search={this.clickSearch} reset={this.resetHandler} change={this.changeHandler} searchBar={this.state.searchBar}/>
             {profile}
           </div>
         </div>
