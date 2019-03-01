@@ -39,10 +39,12 @@ class Boardgame extends Component {
   }
   render () {
     const { boardGames } = this.state;
-    let allBoardGames = boardGames.map(user => {
+    return(
+      <div className="allprofiles__row">
+     {boardGames.map(user => {
       return (
       <div class="card" style={{width: '15rem'}}>
-        <img class="card-img-top" src={user.img_url} alt="Card image cap"/>
+        <img class="card-img-top" src={user.img_url} alt="board image"/>
         <div class="allprofiles_card-body">
           <h5 class="allprofiles__name" >{user.title}</h5>
           <Link to={`/boardgames/${user.id}`} class="btn btn-primary">Visit Game </Link>
@@ -51,14 +53,8 @@ class Boardgame extends Component {
         </div>
       </div>
       )
-    })
-      return (
-      <div className="show-container">
-      <div className="allprofiles__row">
-          {allBoardGames}
-      </div>
-      </div>  
-      )
-  }
+    })}
+    </div>
+    )}
 }  
 export default Boardgame
