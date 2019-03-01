@@ -62,7 +62,7 @@ class Boardgame extends Component {
         });
     
         if(!response.ok) {
-            throw Error()
+          throw Error()
         }
 
         const parsedResponse = await response.json();
@@ -84,9 +84,6 @@ class Boardgame extends Component {
 
   render () {
     const { boardGames, user } = this.state;
-    console.log(this.state, 'THIS IS THIS.STATE FROM BOARDGAME.JS')
-    console.log(user, 'THIS IS USER FROM BOARDGAME.JS');
-    console.log(user == {} , 'THIS IS USER FROM BOARDGAME.JS');
     return(
       <div className="allprofiles__row">
         {boardGames.map((boardGame, index) => {

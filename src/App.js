@@ -19,19 +19,18 @@ import './App.css';
 class App extends Component {
   state = {
     loggedUser: {},
+    userBoardgames: [],
     username:'',
     email:'',
     password:'',
     playedGames: [],
     ownedGames: [],
     boardgames: [],
-   
   }
 
   componentDidMount () {
     this.getBoardgames();
   }
-
 
   getBoardgames = async () => {
     try {
@@ -42,16 +41,44 @@ class App extends Component {
       const boardgamesParsed = await response.json();
       this.setState({
         boardgames: boardgamesParsed
-      })
+      });
     } catch (err) {
       console.log(err, 'error in catch block')
     }
   }
 
-  loginUser = (user) => {
+  loginUser = async (user) => {
     this.setState({
       loggedUser: user
     });
+
+    console.log({user: this.state.loggedUser.id}, ' this is userId from App.js loginUser');
+    //grab user's owned boargames
+    try {
+      const response = await fetch('http://localhost:8000/api/v1/userboardgames', {
+        method: 'GET',
+        credentials: 'include',
+        // body: JSON.stringify({user: this.state.loggedUser.id}),
+        // mode: 'no-cors', do NOT need
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if(!response.ok) {
+        throw Error()
+      }
+
+      const parsedResponse = await response.json();
+      console.log(parsedResponse, ' this is parsedResponse from App.js loginUser');
+
+      // this.setState({
+      //   userBoardgames : parsedResponse
+      // });
+    } catch (err) {
+      console.log(err, ' this ERROR ALL BOARDGAMES');
+    }
+
     console.log(this.state, ' this is App.js state');
   }
 
