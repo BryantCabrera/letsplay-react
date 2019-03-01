@@ -20,8 +20,6 @@ class Login extends Component {
             password: this.state.password
         };
 
-        console.log(JSON.stringify(loggedUser, ' this is loggedUser'));
-
         try {
             const response = await fetch('http://localhost:8000/api/v1/users/login', {
                 method: 'POST',
@@ -39,14 +37,13 @@ class Login extends Component {
 
             const parsedResponse = await response.json();
             if (parsedResponse) {
-                console.log(parsedResponse, ' this is parsedResponse loggedin');
                 this.props.history.push(`/profile/${parsedResponse.id}`);
             }
 
             this.props.loginUser(parsedResponse);
 
         } catch (err) {
-            console.log(err, ' this is error from Login.js')
+            console.log(err, ' this is error from Login.js');
         }
     }
 

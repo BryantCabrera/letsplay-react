@@ -49,7 +49,6 @@ class App extends Component {
   }
 
   loginUser = (user) => {
-    console.log(user, 'from loginUser in app.js');
     this.setState({
       loggedUser: user
     });
@@ -74,7 +73,6 @@ class App extends Component {
 
       const parsedResponse = await response.json();
       if (parsedResponse) {
-        console.log(parsedResponse, ' this is parsedResponse loggedout');
         this.props.history.push(`/`);
       }
 
@@ -97,22 +95,22 @@ class App extends Component {
     const { boardgames } = this.state;
     return (
       <Switch>
-      <div className="App">
-        <Navbar loggedUser={this.state.loggedUser} logoutUser={this.logoutUser} />
-         <Route exact path="/" component={ Landing } />
-         <div className="container">
-           <Route exact path="/login" component= {(props) =>  <Login {...props} history={this.props.history} loginUser={this.loginUser} /> } />
-           <Route exact path="/register" component= {(props) =>  <Register {...props} history={this.props.history} loginUser={this.loginUser} /> } />
-         </div>
-         <Route exact path="/boardgames" component={ Boardgame } boardgames={boardgames} />
-         <Route exact path="/boardgames/:id" component={ OneBoardGame } />
-         <Route exact path="/profiles" component= { AllProfiles }/>
-         <Route exact path="/profile" component={ CreateProfile } />
-         <Route exact path="/profile/:id" component={(props) =>  <ProfileShowPage {...props} user={this.state.loggedUser} /> } />
-         <Route exact path="/profile/:id/edit" component={(props) =>  <EditProfile {...props} user={this.state.loggedUser} updateUser={this.updateUser} /> } />
-       <Footer />
-     </div>
-    </Switch>
+        <div className="App">
+          <Navbar loggedUser={this.state.loggedUser} logoutUser={this.logoutUser} />
+          <Route exact path="/" component={ Landing } />
+          <div className="container">
+            <Route exact path="/login" component= {(props) =>  <Login {...props} history={this.props.history} loginUser={this.loginUser} /> } />
+            <Route exact path="/register" component= {(props) =>  <Register {...props} history={this.props.history} loginUser={this.loginUser} /> } />
+          </div>
+          <Route exact path="/boardgames" component={ Boardgame } boardgames={boardgames} />
+          <Route exact path="/boardgames/:id" component={ OneBoardGame } />
+          <Route exact path="/profiles" component= { AllProfiles }/>
+          <Route exact path="/profile" component={ CreateProfile } />
+          <Route exact path="/profile/:id" component={(props) =>  <ProfileShowPage {...props} user={this.state.loggedUser} /> } />
+          <Route exact path="/profile/:id/edit" component={(props) =>  <EditProfile {...props} user={this.state.loggedUser} updateUser={this.updateUser} /> } />
+        <Footer />
+      </div>
+      </Switch>
     );
   }
 }

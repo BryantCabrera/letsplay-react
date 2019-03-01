@@ -12,7 +12,7 @@ class Register extends Component {
   onChange = (e) => {
       this.setState({
           [e.target.name] : e.target.value
-      })
+      });
     }
 
   onSubmit = async (e) => {
@@ -24,8 +24,6 @@ class Register extends Component {
         password: this.state.password,
         verify_password: this.state.verify_password
       };
-
-      console.log(JSON.stringify(newUser));
 
       try {
         const response = await fetch('http://localhost:8000/api/v1/users', {
@@ -43,14 +41,14 @@ class Register extends Component {
         }
 
         const parsedResponse = await response.json();
-        console.log(parsedResponse);
+
         if (parsedResponse){
           this.props.loginUser(parsedResponse);
           this.props.history.push(`/profile/${parsedResponse.id}/edit`);
         }
 
       } catch (err) {
-        console.log(err, ' this is error from Registers')
+        console.log(err, ' this is error from Registers');
       }
 
       // axios.post('http://localhost:8000/api/v1/users', newUser)
