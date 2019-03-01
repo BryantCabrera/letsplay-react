@@ -2,24 +2,20 @@ import React, { Component } from 'react';
 
 class EditProfle extends Component {
     state = {
-        user: {
-            id: 0,
-            name: '',
-            location: '',
-            img_url: '',
-            email: ''
-        }
+        id: 0,
+        name: '',
+        location: '',
+        img_url: '',
+        email: ''
     }
 
     componentDidMount () {
         this.setState({
-            user: {
-                id: this.props.user.id,
-                name: this.props.user.name,
-                location: this.props.user.location,
-                img_url: this.props.user.img_url,
-                email: this.props.user.email
-            }
+            id: this.props.user.id,
+            name: this.props.user.name,
+            location: this.props.user.location,
+            img_url: this.props.user.img_url,
+            email: this.props.user.email
         });
     }
 
@@ -30,9 +26,9 @@ class EditProfle extends Component {
             name: this.state.name,
             location: this.state.location,
             img_url: this.state.img_url,
-            email: 'this.state.user.email'
+            email: this.state.email
         };
-        console.log(JSON.stringify(updatedUser))
+        console.log(JSON.stringify(updatedUser), ' this is updatedUser from EditProfile.js')
         
         console.log(`http://localhost:8000/api/v1/users/${this.props.user.id}, this is update EditProfile URL`);
         try {
@@ -53,6 +49,7 @@ class EditProfle extends Component {
             const parsedResponse = await response.json();
             console.log(parsedResponse, ' this is parsedResponse from EditProfile profileUpdate fn');
             if (parsedResponse){
+                this.props.updateUser(updatedUser);
                 this.props.history.push(`/profile/${this.props.user.id}`);
             }
 

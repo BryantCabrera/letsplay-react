@@ -86,6 +86,12 @@ class App extends Component {
       console.log(err, ' this is error from Login.js')
     }
   }
+
+  updateUser = (user) => {
+    this.setState({
+      loggedUser: user
+    });
+  }
   
   render() {
     const { boardgames } = this.state;
@@ -103,7 +109,7 @@ class App extends Component {
          <Route exact path="/profiles" component= { AllProfiles }/>
          <Route exact path="/profile" component={ CreateProfile } />
          <Route exact path="/profile/:id" component={(props) =>  <ProfileShowPage {...props} user={this.state.loggedUser} /> } />
-         <Route exact path="/profile/:id/edit" component={(props) =>  <EditProfile {...props} user={this.state.loggedUser} /> } />
+         <Route exact path="/profile/:id/edit" component={(props) =>  <EditProfile {...props} user={this.state.loggedUser} updateUser={this.updateUser} /> } />
        <Footer />
      </div>
     </Switch>
