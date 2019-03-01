@@ -21,6 +21,7 @@ import { Link , withRouter } from 'react-router-dom';
                   <div className="form-group">
                   <input type="text" className="form-control form-control-lg" placeholder="Wishlist" name="playedGames" disabled/>
                   </div>
+                  
                   <Link to="/profile/:id/edit">
                     <button type="submit" className="btn btn-info btn-block mt-4">Edit My Profile</button>
                   </Link>

@@ -37,7 +37,7 @@ class AllProfiles extends Component {
     let profile = users.map(user => {
       return (
       <div class="card" style={{width: '15rem'}}>
-        <img class="card-img-top" src={user.img_url} alt="Card image cap"/>
+        <img class="card-img-top" src={user.img_url} alt="user profile picture"/>
         <div class="allprofiles_card-body">
           <h5 class="allprofiles__name" >{user.name}</h5>
           <p class="allprofiles__email" >{user.email}</p>

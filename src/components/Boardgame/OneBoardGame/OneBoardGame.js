@@ -33,10 +33,20 @@ class OneBoardGame extends Component {
   }
 
 render(){
+  const { boardGame } = this.state; 
   return (
     <div>
-      <h1>{this.state.boardGame.title}</h1> 
-
+      <div class="card mb-3">
+      <img class="card-img-top" src={boardGame.img_url} alt="boardgame image"/>
+        <div class="OneBoardGame__card-body">
+         <h1 class="card-title">{boardGame.title}</h1>
+         <p class="card-text">Designer: {boardGame.designer} </p>
+         <p class="card-text">Mininum players: {boardGame.number_of_players_min} </p>
+         <p class="card-text">Maximum players: {boardGame.number_of_players_max} </p>
+         <p class="card-text">Play time: {boardGame.play_time}</p>
+         <p class="card-text">{boardGame.description}</p>
+        </div>
+      </div>
     </div>
   )
 }
