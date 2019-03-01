@@ -36,24 +36,23 @@ class AllProfiles extends Component {
     const { users } = this.state;
     let profile = users.map(user => {
       return (
-      <div class="card" style={{width: '15rem'}}>
-        <img class="card-img-top" src={user.img_url} alt="user profile picture"/>
-        <div class="allprofiles_card-body">
-          <h5 class="allprofiles__name" >{user.name}</h5>
-          <p class="allprofiles__email" >{user.email}</p>
-          <p class="allprofiles__location" >Location: {user.location}</p>
-          <Link to={`/profile/${user.id}`} class="btn btn-primary">Visit Profile </Link>
+        <div class="card" style={{width: '15rem'}}>
+          <img class="card-img-top" src={user.img_url} alt="user profile picture"/>
+          <div class="allprofiles_card-body">
+            <h5 class="allprofiles__name" >{user.name}</h5>
+            <p class="allprofiles__email" >{user.email}</p>
+            <p class="allprofiles__location" >Location: {user.location}</p>
+            <Link to={`/profile/${user.id}`} class="btn btn-primary">Visit Profile </Link>
+          </div>
         </div>
-      </div>
       )
     })
       return (
-      <div className="show-container">
-      <div className="allprofiles__row">
-          {profile}
-      </div>
-      </div>
-           
+        <div className="show-container">
+          <div className="allprofiles__row">
+            {profile}
+          </div>
+        </div>
       )
   }
 }  
