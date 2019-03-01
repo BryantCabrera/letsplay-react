@@ -45,6 +45,7 @@ class Register extends Component {
         const parsedResponse = await response.json();
         console.log(parsedResponse);
         if (parsedResponse){
+          this.props.loginUser(parsedResponse);
           this.props.history.push(`/profile/${parsedResponse.id}/edit`);
         }
 
