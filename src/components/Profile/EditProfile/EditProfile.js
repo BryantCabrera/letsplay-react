@@ -120,7 +120,7 @@ class EditProfle extends Component {
                                     <input type="text" className="form-control form-control-lg" defaultValue={this.props.user.name} name="name" onChange={this.onChange}/>
                                 </div>
                                 <div className="form-group">
-                                    <input type="number" minlength="5" maxlength="5" className="form-control form-control-lg" defaultValue={this.props.user.location} name="location" onChange={this.onChange}/>
+                                    <input type="number" minLength="5" maxLength="5" className="form-control form-control-lg" defaultValue={this.props.user.location} name="location" onChange={this.onChange}/>
                                 </div>
                                 <div className="form-group">
                                     <input type="text" className="form-control form-control-lg" defaultValue={"Img Url"} name="img_url" onChange={this.onChange}/>
@@ -131,6 +131,7 @@ class EditProfle extends Component {
                                 <div className="form-group">
                                     <input type="text" className="form-control form-control-lg" placeholder="Add Boardgames I've Played" name="playedGames" onChange={this.onChange}/>
                                 </div>
+
                                 <input type="submit" className="btn btn-info btn-block mt-4" />
                             </form>
                             <button type="submit" onClick = {this.deleteProfile} className="btn btn-danger btn-block mt-4">Delete My Profile</button>
@@ -143,4 +144,4 @@ class EditProfle extends Component {
 }
 
 
-export default EditProfle
+export default EditProfle;

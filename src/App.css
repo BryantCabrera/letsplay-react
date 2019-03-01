@@ -34,7 +34,9 @@ img {
 
 /* PROFILE/ALLPROFILES END */
 
-
+.OneBoardGame__card-body {
+  text-align: center;
+}
 
 /* LAYOUT- LANDING PAGE BEGIN */
 .layout__landing {
