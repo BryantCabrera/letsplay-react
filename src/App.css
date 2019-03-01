@@ -38,6 +38,16 @@ img {
   text-align: center;
 }
 
+/* ALLBOARDGAMES START */
+.card-img-top {
+  width: 100%;
+  height: 40vh;
+  object-fit: fill;
+}
+/* ALLBOARDGAMES END */
+
+
+
 /* LAYOUT- LANDING PAGE BEGIN */
 .layout__landing {
   position: relative;
