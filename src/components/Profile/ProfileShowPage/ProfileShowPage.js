@@ -18,19 +18,16 @@ import { Link , withRouter } from 'react-router-dom';
                   <input type="text" className="form-control form-control-lg" value={this.props.user.location} placeholder="Location" name="location" disabled/>
                 </div>
                 <div>
-                  <h2>Games I Own</h2>
+                  <h2 className="ProfileShowPage__owned-games">Games I Own:</h2>
                   {this.props.userBoardgames.map((game, index) => 
-                    <div>
-                      {/* make the image a link to boardgame's individual show page */}
-                      <img class="card-img-top" src={game.img_url} key={index} alt="boardgame"/> 
-                      {/* title of game here */}
+                    <div className="ProfileShowPage__container-box">
+                      <Link to={`/boardgames/${game.id}`}> 
+                      <img className="cards" src={game.img_url} key={index} alt="boardgame"/> 
+                      </Link>
+                      <p className="ProfileShowPage__game-title">{game.title}</p>
                     </div>
                   )}
                 </div>
-                <div className="form-group">
-                  <input type="text" className="form-control form-control-lg" placeholder="Wishlist" name="playedGames" disabled/>
-                </div>
-                
                 <Link to="/profile/:id/edit">
                   <button type="submit" className="btn btn-info btn-block mt-4">Edit My Profile</button>
                 </Link>
