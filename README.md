@@ -2,9 +2,16 @@
 
 
 ## A. Description
-Let's Play
+Let's Play is an app that caters to board game enthusiasts. Visitors of the website can see a list of boardgames, add a particular boardgame to their favorites, and see profiles of other board gamers as well as their favorite boardgames.
 
-Link to deployed app: 
+The apps' front-end uses React, a popular Javascript library for building user interfaces with modular components.
+
+The app's back-end architecture features users and board games routes with complete CRUD (Create, Read, Update, and Delete) capabilities using RESTful routing. This router also features authentication using bcrypt.
+The boardgame router uses RESTful routing to grab appropriate data, provided by the BoardGameGeek API.
+
+
+## B. Link to deployed app: 
+heroku
 
 
 ```
@@ -14,16 +21,13 @@ Abraham Hsu - Scrum Master/API Manager/Designer/React Lead
 
 ```
 
-## B. User Stories
-```
-As a user, I want to be able to check out some of the app's features without having to sign up.
-```
-```
-As a user, I want a responsive navigation bar because I want access to appropriate components of the app.
-```
+## C. App Images
 
-
-## C. Images
+![Imgur](https://i.imgur.com/QqglYvs.png)
+![Imgur](https://i.imgur.com/Qy0ujpR.png)
+![Imgur](https://i.imgur.com/wi7cQfB.jpg)
+![Imgur](https://i.imgur.com/8TZ3SEk.png)
+![Imgur](https://i.imgur.com/fbD31Lg.png)
 
 
 
@@ -31,24 +35,29 @@ As a user, I want a responsive navigation bar because I want access to appropria
 > Front-End
     
     1. React
-    2. React-bootstrap
+    2. Bootstrap
     3. BEM
-    4. Google fonts
-    5. fetch
+    4. Google Fonts
+    5. HTML
+    6. CSS
+    7. Javascript
+    8. Heroku
+    9. Git
 
 > Back-End
 
-    1. flask
+    1. Python
     2. PostgreSQL
-    3. axios
+    3. Flask
+    4. Restful Routing
+
+> APIs
+    1. Board Game Geek
 
 
 > Authentication
     
-    1. passport
-    2. google OAuth 2
-    3. sockets
-    4. bcrypt
+    1. Bcrypt
 
 > Planning/Organization/Design
     
@@ -56,11 +65,28 @@ As a user, I want a responsive navigation bar because I want access to appropria
     2. Adobe Photoshop
 
 
-## E. Getting Started
+## E. User Stories
+LOGGING IN: Users are able to register for a new account. 
+When a user signs up for the first time, user will be presented a user profile page, where they'll fill out his or her name, profile picture, and location.
 
+User will be able to browse all board games and add a particular game to his/her collection.
+
+USER PROFILE:
+Once vendor has completed their profile page, website will redirect to their own profile page, showing their info: profile picture, username, location, and board games he/she owns.
+
+WEBSITE VISITORS:
+Upon visiting the landing page, visitors are greeted a splash image of people gathered around playin a boardgame and can either register for a new account, discover all board games, or browse other profile.
+
+Upon clicking a boardgame, visitor will be redirected to the Boardgame Show page, which displays additional information about the game: the designer, minimum and maximum players, play time, and description.
+
+BOARD GAMES:
+Available boardgames are viewable by anyone, without the need to register.
+Clickin a boardgame image will redirect user to a boardgame's individual showpage, showing additional information.
 
 ## F. Github workflow
-1.	Link to repo: [https://github.com/BryantCabrera/letsplay-react](https://github.com/BryantCabrera/letsplay-react).  
+1.	Link to repository Front-End in React: [https://github.com/BryantCabrera/letsplay-react](https://github.com/BryantCabrera/letsplay-react). 
+2.  1.	Link to repository Back-End in Python & Flask: [https://github.com/BryantCabrera/letsplay-flask](https://github.com/BryantCabrera/letsplay-flask). 
+
 2.	On your personal repo (NOT the General Assembly) enterprise, log in.  then click link above and fork the repo.  Make sure the repo is in your personal GitHub (go to your personal GitHub account and the project repo “relocater” should be there).  Then, from YOUR PERSONAL FORK, clone it to your local repo.
     1.	$git clone {without curly braces, put the clone link here}
     2.  $git remote add upstream https://github.com/BryantCabrera/letsplay-react
@@ -109,78 +135,18 @@ As a user, I want a responsive navigation bar because I want access to appropria
 
 
 ## G. Next Steps
+Unsolved problems:
+    Search bar needs to match exact characters, including Uppercase. Search bar user-unfriendly, having to press "Reset Search" everytime a user wants to perform another search.
+    Users can edit other user's profiles. 
+    
+Planned features:
+    When a boardgame is added, no activity happens. Make it so a flash message appears, "Boardgame has been added!" 
+    Users able to leave ratings and reviews on boardgames.
+    Users able to chat with other users to discuss boardgames or meet-up times to play boardgames together.
+    Authentication with Google or other social medias for easier login and security.
+    User to be able to delete a boardgame from their list.
+    Make search bar smoother: with each key press, start filtering boardgame names and animate the flow of 
+    boardgames disappearing.
+ 
 
 
-
-
-
-#<u>React Documentation</u>
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# letsplay-react
