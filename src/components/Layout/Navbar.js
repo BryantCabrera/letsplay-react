@@ -2,16 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
-  state = {
-    loggedUser: {}
-  }
-
-  // componentDidMount () {
-  //   this.setState({
-  //     loggedUser: this.props.loggedUser
-  //   });
-  //   console.log(this.state, ' this is state from Navbar.js');
-  // }
 
   render() {
     return (

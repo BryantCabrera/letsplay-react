@@ -14,42 +14,43 @@ class OneBoardGame extends Component {
       const response = await fetch(`http://localhost:8000/api/v1/boardgames/${id}`, {
         method: 'GET',
         credentials: 'include',
-        // mode: 'no-cors', do NOT need
         headers: {
           'Content-Type': 'application/json'
         }
       });
+
       if(!response.ok) {
         throw Error()
       }
+
       const parsedResponse = await response.json();
-      console.log(parsedResponse)
+
       this.setState({
         boardGame : parsedResponse
-      })
+      });
     } catch (err) {
-      console.log(err, ' this ERROR ALL BOARDGAMES')
+      console.log(err, ' this is error from oneboardgame.js');
     }
   }
 
-render(){
-  const { boardGame } = this.state; 
-  return (
-    <div>
-      <div class="card mb-3">
-      <img class="card-img" src={boardGame.img_url} alt="boardgame"/>
-        <div class="OneBoardGame__card-body">
-         <h1 class="card-title">{boardGame.title}</h1>
-         <p class="card-text">Designer: {boardGame.designer} </p>
-         <p class="card-text">Mininum players: {boardGame.number_of_players_min} </p>
-         <p class="card-text">Maximum players: {boardGame.number_of_players_max} </p>
-         <p class="card-text">Play time: {boardGame.play_time}</p>
-         <p class="card-text">{boardGame.description}</p>
+  render(){
+    const { boardGame } = this.state; 
+    return (
+      <div>
+        <div class="card mb-3">
+        <img class="card-img" src={boardGame.img_url} alt="boardgame"/>
+          <div class="OneBoardGame__card-body">
+          <h1 class="card-title">{boardGame.title}</h1>
+          <p class="card-text">Designer: {boardGame.designer} </p>
+          <p class="card-text">Mininum players: {boardGame.number_of_players_min} </p>
+          <p class="card-text">Maximum players: {boardGame.number_of_players_max} </p>
+          <p class="card-text">Play time: {boardGame.play_time}</p>
+          <p class="card-text">{boardGame.description}</p>
+          </div>
         </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
 } 
 
 export default OneBoardGame;

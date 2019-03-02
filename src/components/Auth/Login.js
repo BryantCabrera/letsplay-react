@@ -24,18 +24,17 @@ class Login extends Component {
                 method: 'POST',
                 credentials: 'include',
                 body: JSON.stringify(loggedUser),
-                // mode: 'no-cors', do NOT need
                 headers: {
                 'Content-Type': 'application/json'
                 }
             });
 
-            // if(!response.ok) {
-            //     throw Error()
-            // }
+            if(!response.ok) {
+                throw Error()
+            }
 
             const parsedResponse = await response.json();
-            if (parsedResponse) {
+            if (parsedResponse.id) {
                 this.props.history.push(`/profile/${parsedResponse.id}`);
             }
 

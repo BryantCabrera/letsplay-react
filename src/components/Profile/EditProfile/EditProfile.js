@@ -34,9 +34,8 @@ class EditProfle extends Component {
                 method: 'PUT',
                 credentials: 'include',
                 body: JSON.stringify(updatedUser),
-                // mode: 'no-cors', do NOT need
                 headers: {
-                'Content-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 }
             });
         
@@ -51,15 +50,14 @@ class EditProfle extends Component {
             }
 
         } catch (err) {
-            console.log(err, ' this is error from Edit Profile');
+            console.log(err, ' This is error from EditProfile.js');
         }
     }
     
     onChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value
-        })
-
+        });
     }
 
     deleteProfile = async (e) => {
@@ -68,7 +66,6 @@ class EditProfle extends Component {
             const response = await fetch(`http://localhost:8000/api/v1/users/${this.props.user.id}`, {
                 method: 'DELETE',
                 credentials: 'include',
-                // mode: 'no-cors', do NOT need
                 headers: {
                 'Content-Type': 'application/json'
                 }
@@ -103,8 +100,6 @@ class EditProfle extends Component {
         } catch (err) {
             console.log(err, ' this is error from Edit Profile');
         }
-        // get id From backend
-        //
     }
 
 
@@ -124,12 +119,6 @@ class EditProfle extends Component {
                                 </div>
                                 <div className="form-group">
                                     <input type="text" className="form-control form-control-lg" defaultValue={"Img Url"} name="img_url" onChange={this.onChange}/>
-                                </div>
-                                <div className="form-group">
-                                    <input type="text" className="form-control form-control-lg" placeholder="Add Owned Boardgames" name="ownedGames" onChange={this.onChange}/>
-                                </div>
-                                <div className="form-group">
-                                    <input type="text" className="form-control form-control-lg" placeholder="Add Boardgames I've Played" name="playedGames" onChange={this.onChange}/>
                                 </div>
 
                                 <input type="submit" className="btn btn-info btn-block mt-4" />
