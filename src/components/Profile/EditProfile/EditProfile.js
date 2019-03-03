@@ -102,7 +102,6 @@ class EditProfle extends Component {
         }
     }
 
-
     render() {
         return (
             <div className="profile">
@@ -123,7 +122,7 @@ class EditProfle extends Component {
 
                                 <input type="submit" className="btn btn-info btn-block mt-4" />
                             </form>
-                            <button type="submit" onClick = {this.deleteProfile} className="btn btn-danger btn-block mt-4">Delete My Profile</button>
+                            <button type="submit" onClick={this.deleteProfile} className="btn btn-danger btn-block mt-4">Delete My Profile</button>
                         </div>
                     </div>
                 </div>
@@ -131,6 +130,5 @@ class EditProfle extends Component {
         )
     }
 }
-
 
 export default EditProfle;

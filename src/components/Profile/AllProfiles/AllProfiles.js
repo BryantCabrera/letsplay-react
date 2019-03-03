@@ -28,6 +28,7 @@ class AllProfiles extends Component {
       this.setState({
         users : parsedResponse.users
       });
+
     } catch (err) {
       console.log(err, ' This is error from AllProfiles.js');
     }
@@ -38,7 +39,7 @@ class AllProfiles extends Component {
     let filteredUsers = this.state.users.filter(game => game.name.includes(this.state.searchBar));
 
     this.setState({
-        users : filteredUsers
+      users : filteredUsers
     });
   }
 
@@ -50,7 +51,7 @@ class AllProfiles extends Component {
     this.setState({
       ...this.state,
       [e.target.name] : e.target.value
-  });
+    });
   }
 
   render () {
@@ -60,10 +61,10 @@ class AllProfiles extends Component {
         <div className="card" style={{width: '15rem'}} key={index}>
           <img className="card-img-top" src={user.img_url} alt="user profile"/>
           <div className="allprofiles_card-body">
-            <h5 className="allprofiles__name" >{user.name}</h5>
-            <p className="allprofiles__email" >{user.email}</p>
-            <p className="allprofiles__location" >Location: {user.location}</p>
-            <Link to={`/profile/${user.id}`} className="btn btn-primary">Visit Profile </Link>
+            <h5 className="allprofiles__name">{user.name}</h5>
+            <p className="allprofiles__email">{user.email}</p>
+            <p className="allprofiles__location">Location: {user.location}</p>
+            <Link to={`/profile/${user.id}`} className="btn btn-primary"  onClick={() => this.props.viewProfile(user)}>Visit Profile</Link>
           </div>
         </div>
       )

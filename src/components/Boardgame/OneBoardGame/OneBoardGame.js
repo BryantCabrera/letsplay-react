@@ -1,12 +1,12 @@
-import React,{ Component } from 'react'
+import React,{ Component } from 'react';
 
 class OneBoardGame extends Component {
   state={
     boardGame:  {}
   }
   componentDidMount(){
-    const { id } = this.props.match.params
-    this.getBoardGame(id)
+    const { id } = this.props.match.params;
+    this.getBoardGame(id);
   }
 
   getBoardGame = async (id) => {
@@ -28,6 +28,7 @@ class OneBoardGame extends Component {
       this.setState({
         boardGame : parsedResponse
       });
+      
     } catch (err) {
       console.log(err, ' this is error from oneboardgame.js');
     }

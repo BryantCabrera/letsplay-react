@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Searchbar from '../../Searchbar/Searchbar';
+
 class Boardgame extends Component {
   state = {
     boardGames: [],
@@ -32,7 +33,7 @@ class Boardgame extends Component {
     this.setState({
       ...this.state,
       [e.target.name] : e.target.value
-      });
+    });
   }
 
   getBoardgames = async () => {
@@ -54,6 +55,7 @@ class Boardgame extends Component {
       this.setState({
         boardGames : parsedResponse.boardgames
       });
+
     } catch (err) {
       console.log(err, ' this is error from all boardgames');
     }
@@ -111,4 +113,5 @@ class Boardgame extends Component {
     )
   }
 }  
+
 export default Boardgame;

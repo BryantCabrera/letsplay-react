@@ -6,7 +6,7 @@ Let's Play is an app that caters to board game enthusiasts. Visitors of the webs
 
 The apps' front-end uses React, a popular Javascript library for building user interfaces with modular components.
 
-The app's back-end architecture features users and board games routes with complete CRUD (Create, Read, Update, and Delete) capabilities using RESTful routing. This router also features authentication using bcrypt.
+The app's back-end architecture features users and boardgames routes with complete CRUD (Create, Read, Update, and Delete) capabilities using RESTful routing. This router also features authentication using bcrypt.
 The boardgame router uses RESTful routing to grab appropriate data, provided by the BoardGameGeek API.
 
 
@@ -15,19 +15,27 @@ heroku
 
 
 ```
-Let's Play was built in 5 days by:
-Bryant Cabrera - GitLab Manager/Scrum Master/Documenter/Designer
-Abraham Hsu - Scrum Master/API Manager/Designer/React Lead
+Let's Play was built in 4 days by:
+Bryant Cabrera - GitLab Manager/Scrum Master/Documenter
+Abraham Hsu - Scrum Master/API Manager/Designer
 
 ```
 
 ## C. App Images
+1. Splash Page
+    > ![Image of Splash Page](https://i.imgur.com/QqglYvs.png)
 
-![Imgur](https://i.imgur.com/QqglYvs.png)
-![Imgur](https://i.imgur.com/Qy0ujpR.png)
-![Imgur](https://i.imgur.com/wi7cQfB.jpg)
-![Imgur](https://i.imgur.com/8TZ3SEk.png)
-![Imgur](https://i.imgur.com/fbD31Lg.png)
+2. Registration Page
+    > ![Image of Registration Page](https://i.imgur.com/Qy0ujpR.png)
+
+3. User Profile Page
+    > ![Image of User Profile Page](https://i.imgur.com/8TZ3SEk.png)
+
+4. Boardgame Index
+    > ![Image of Boardgame Index](https://i.imgur.com/wi7cQfB.jpg)
+
+5. Individual Boardgame's Show Page
+    > ![Image of Individual Boardgame's Show Page](https://i.imgur.com/fbD31Lg.png)
 
 
 
@@ -52,6 +60,7 @@ Abraham Hsu - Scrum Master/API Manager/Designer/React Lead
     4. Restful Routing
 
 > APIs
+
     1. Board Game Geek
 
 
@@ -64,29 +73,34 @@ Abraham Hsu - Scrum Master/API Manager/Designer/React Lead
     1. Adobe XD
     2. Adobe Photoshop
 
-
 ## E. User Stories
-LOGGING IN: Users are able to register for a new account. 
-When a user signs up for the first time, user will be presented a user profile page, where they'll fill out his or her name, profile picture, and location.
 
-User will be able to browse all board games and add a particular game to his/her collection.
+## F. Getting Started
+1. LOGGING IN: Users are able to register for a new account. 
+    > When a user signs up for the first time, user will be presented a user profile page, where they'll fill out his or her name, profile picture, and location.
 
-USER PROFILE:
-Once vendor has completed their profile page, website will redirect to their own profile page, showing their info: profile picture, username, location, and board games he/she owns.
+    > User will be able to browse all board games and add a particular game to his/her collection.
 
-WEBSITE VISITORS:
-Upon visiting the landing page, visitors are greeted a splash image of people gathered around playin a boardgame and can either register for a new account, discover all board games, or browse other profile.
+2. USER PROFILE:
+    > Once vendor has completed their profile page, website will redirect to their own profile page, showing their info: profile picture, username, location, and board games he/she owns.
 
-Upon clicking a boardgame, visitor will be redirected to the Boardgame Show page, which displays additional information about the game: the designer, minimum and maximum players, play time, and description.
+3. WEBSITE VISITORS:
+    > Upon visiting the landing page, visitors are greeted a splash image of people gathered around playin a boardgame and can either register for a new account, discover all board games, or browse other profile.
 
-BOARD GAMES:
-Available boardgames are viewable by anyone, without the need to register.
-Clickin a boardgame image will redirect user to a boardgame's individual showpage, showing additional information.
+    > Upon clicking a boardgame, visitor will be redirected to the Boardgame Show page, which displays additional information about the game: the designer, minimum and maximum players, play time, and description.
 
-## F. Github workflow
-1.	Link to repository Front-End in React: [https://github.com/BryantCabrera/letsplay-react](https://github.com/BryantCabrera/letsplay-react). 
-2.  1.	Link to repository Back-End in Python & Flask: [https://github.com/BryantCabrera/letsplay-flask](https://github.com/BryantCabrera/letsplay-flask). 
+4. BOARD GAMES:
+    > Available boardgames are viewable by anyone, without the need to register.
+    
+    > Clicking a boardgame image will redirect user to a boardgame's individual showpage, showing additional information.
 
+## G. Github workflow
+1.	Deploayed Links
+    1. Front-End
+        1. Link to Deplayed React Front-End:
+        2. Link to React Front-End repository: [https://github.com/BryantCabrera/letsplay-react](https://github.com/BryantCabrera/letsplay-react). 
+    2.	Back-End
+        1. Link to Python & Flask Back-End repository: [https://github.com/BryantCabrera/letsplay-flask](https://github.com/BryantCabrera/letsplay-flask). 
 2.	On your personal repo (NOT the General Assembly) enterprise, log in.  then click link above and fork the repo.  Make sure the repo is in your personal GitHub (go to your personal GitHub account and the project repo “relocater” should be there).  Then, from YOUR PERSONAL FORK, clone it to your local repo.
     1.	$git clone {without curly braces, put the clone link here}
     2.  $git remote add upstream https://github.com/BryantCabrera/letsplay-react
@@ -135,18 +149,13 @@ Clickin a boardgame image will redirect user to a boardgame's individual showpag
 
 
 ## G. Next Steps
-Unsolved problems:
-    Search bar needs to match exact characters, including Uppercase. Search bar user-unfriendly, having to press "Reset Search" everytime a user wants to perform another search.
-    Users can edit other user's profiles. 
-    
-Planned features:
-    When a boardgame is added, no activity happens. Make it so a flash message appears, "Boardgame has been added!" 
-    Users able to leave ratings and reviews on boardgames.
-    Users able to chat with other users to discuss boardgames or meet-up times to play boardgames together.
-    Authentication with Google or other social medias for easier login and security.
-    User to be able to delete a boardgame from their list.
-    Make search bar smoother: with each key press, start filtering boardgame names and animate the flow of 
-    boardgames disappearing.
- 
-
-
+1. Unsolved problems:
+    [] Search bar needs to match exact characters, including Uppercase. 
+    [] Search bar requires users to press "Reset Search" everytime a user wants to perform another search.
+2. Planned features:
+    - [ ] When a boardgame is added, no activity happens. Ideally, we'd make it so a flash message appears, "Boardgame has been added!" 
+    - [ ] Add ability for users able to leave ratings and reviews on boardgames.
+    - [ ] Add ability for users able to chat with other users to discuss boardgames or meet-up times to play boardgames together.
+    - [ ] Authentication with Google or other social medias for easier login and security.
+    - [ ] Add ability for user to delete a boardgame from their list.
+    - [ ] Make search bar smoother: with each key press, start filtering boardgame names and animate the flow of boardgames disappearing.

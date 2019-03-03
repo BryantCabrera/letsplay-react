@@ -10,14 +10,14 @@ import OneBoardGame from './components/Boardgame/OneBoardGame/OneBoardGame';
 import AllProfiles from './components/Profile/AllProfiles/AllProfiles';
 import EditProfile from './components/Profile/EditProfile/EditProfile';
 import ProfileShowPage from './components/Profile/ProfileShowPage/ProfileShowPage';
-
-
 import './App.css';
 
 class App extends Component {
   state = {
     loggedUser: {},
     userBoardgames: [],
+    userToView: {},
+    userToViewBoardgames: [],
     username:'',
     email:'',
     password:'',
@@ -58,8 +58,6 @@ class App extends Component {
       const response = await fetch('http://localhost:8000/api/v1/userboardgames', {
         method: 'GET',
         credentials: 'include',
-        // body: JSON.stringify({user: this.state.loggedUser.id}),
-        // mode: 'no-cors', do NOT need
         headers: {
           'Content-Type': 'application/json'
         }
@@ -75,8 +73,7 @@ class App extends Component {
           userBoardgames: parsedResponse
         });
       }
-      console.log(parsedResponse, ' this is parsedRespone from App.js');
-
+  
     } catch (err) {
       console.log(err, ' This is error from App.js loginuser().');
     }
@@ -116,6 +113,34 @@ class App extends Component {
       loggedUser: user
     });
   }
+
+  viewProfile = async (userToView) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/v1/userboardgames/${userToView.id}`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if(!response.ok) {
+        throw Error()
+      }
+
+      const parsedResponse = await response.json();
+      if (parsedResponse) {
+        this.setState({
+          userToView: userToView,
+          userToViewBoardgames: parsedResponse
+        });
+        console.log(this.state.userToView, ' userToView from App.js');
+      }
+
+    } catch (err) {
+      console.log(err, ' This is error from App.js loginuser().');
+    }
+  }
   
   render() {
     const {boardgames} = this.state;
@@ -130,8 +155,8 @@ class App extends Component {
           </div>
           <Route exact path="/boardgames" component= {(props) =>  <Boardgame {...props} history={this.props.history} user={this.state.loggedUser}  /> } />
           <Route exact path="/boardgames/:id" component={ OneBoardGame } />
-          <Route exact path="/profiles" component= { AllProfiles }/>
-          <Route exact path="/profile/:id" component={(props) =>  <ProfileShowPage {...props} user={this.state.loggedUser} userBoardgames={this.state.userBoardgames} /> } />
+          <Route exact path="/profiles" component={(props) =>  <AllProfiles {...props} user={this.state.loggedUser} userBoardgames={this.state.userBoardgames} viewProfile={this.viewProfile} /> } />
+          <Route exact path="/profile/:id" component={(props) =>  <ProfileShowPage {...props} user={this.state.loggedUser} userBoardgames={this.state.userBoardgames} userToView={this.state.userToView} userToViewBoardgames={this.state.userToViewBoardgames} /> } />
           <Route exact path="/profile/:id/edit" component={(props) =>  <EditProfile {...props} user={this.state.loggedUser} updateUser={this.updateUser} /> } />
         <Footer />
       </div>
