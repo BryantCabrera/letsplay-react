@@ -126,6 +126,12 @@ class App extends Component {
     });
   }
 
+  changeAuthMessage = (message) => {
+    this.setState({
+      authMessage: message
+    })
+  }
+
   viewProfile = async (userToView) => {
     try {
       const response = await fetch(`http://localhost:8000/api/v1/userboardgames/${userToView.id}`, {
@@ -176,7 +182,7 @@ class App extends Component {
           <Route exact path="/boardgames/:id" component={ OneBoardGame } />
           <Route exact path="/profiles" component={(props) =>  <AllProfiles {...props} user={this.state.loggedUser} userBoardgames={this.state.userBoardgames} viewProfile={this.viewProfile} /> } />
           <Route exact path="/profile/:id" component={(props) =>  <ProfileShowPage {...props} user={this.state.loggedUser} userBoardgames={this.state.userBoardgames} userToView={this.state.userToView} userToViewBoardgames={this.state.userToViewBoardgames} /> } />
-          <Route exact path="/profile/:id/edit" component={(props) =>  <EditProfile {...props} user={this.state.loggedUser} updateUser={this.updateUser} /> } />
+          <Route exact path="/profile/:id/edit" component={(props) =>  <EditProfile {...props} user={this.state.loggedUser} updateUser={this.updateUser} changeAuthMessage={this.changeAuthMessage} /> } />
           <Footer />
         </div>
       </Switch>

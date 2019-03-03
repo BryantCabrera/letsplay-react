@@ -63,47 +63,7 @@ class EditProfle extends Component {
     deleteProfile = async (e) => {
         e.preventDefault();
 
-        //deletes profile
-        try {
-            const response = await fetch(`http://localhost:8000/api/v1/users/${this.props.user.id}`, {
-                method: 'DELETE',
-                credentials: 'include',
-                headers: {
-                'Content-Type': 'application/json'
-                }
-            });
-        
-            if(!response.ok) {
-                throw Error()
-            }
-
-            const parsedResponse = await response.json();
-            console.log(parsedResponse, 'parsedResponse from EditProfile.js delete')
-            if (parsedResponse){
-                this.setState({
-                    id: 0,
-                    name: '',
-                    location: '',
-                    img_url: '',
-                    email: ''
-
-                });
-
-                const deletedUser = {
-                    id: this.state.id,
-                    name: this.state.name,
-                    location: this.state.location,
-                    img_url: this.state.img_url,
-                    email: this.state.email
-                }
-
-                this.props.updateUser(deletedUser);
-                this.props.history.push('/');
-            }
-        } catch (err) {
-            console.log(err, ' this is error from Edit Profile');
-        }
-
+        let authMessage = '';
         //deletes boardgames in userboardgame
         try {
             const response = await fetch(`http://localhost:8000/api/v1/userboardgames/${this.props.user.id}`, {
@@ -119,7 +79,31 @@ class EditProfle extends Component {
             }
 
             const parsedResponse = await response.json();
-            console.log(parsedResponse, 'parsedResponse from EditProfile.js delete')
+            
+            if (parsedResponse){
+                authMessage += 'User\'s Boardgames Successfully Deleted.';
+            }
+
+        } catch (err) {
+            console.log(err, ' this is error from Edit Profile');
+        }
+
+        //deletes profile
+        try {
+            const response = await fetch(`http://localhost:8000/api/v1/users/${this.props.user.id}`, {
+                method: 'DELETE',
+                credentials: 'include',
+                headers: {
+                'Content-Type': 'application/json'
+                }
+            });
+        
+            if(!response.ok) {
+                throw Error()
+            }
+
+            const parsedResponse = await response.json();
+ 
             if (parsedResponse){
                 this.setState({
                     id: 0,
@@ -138,6 +122,8 @@ class EditProfle extends Component {
                     email: this.state.email
                 }
 
+                authMessage += `\n User Successfully Deleted.`;
+                this.props.changeAuthMessage(authMessage);
                 this.props.updateUser(deletedUser);
                 this.props.history.push('/');
             }

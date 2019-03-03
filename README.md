@@ -150,8 +150,9 @@ Abraham Hsu - Scrum Master/API Manager/Designer
 
 ## G. Next Steps
 1. Unsolved problems:
-    [] Search bar needs to match exact characters, including Uppercase. 
-    [] Search bar requires users to press "Reset Search" everytime a user wants to perform another search.
+    - [ ] Search bar needs to match exact characters, including Uppercase. 
+    - [ ] Search bar requires users to press "Reset Search" everytime a user wants to perform another search.
+    - [ ] After adding a boardgame to user, must view all profiles then click on own profile in order to correctly display owned boardgames.
 2. Planned features:
     - [ ] When a boardgame is added, no activity happens. Ideally, we'd make it so a flash message appears, "Boardgame has been added!" 
     - [ ] Add ability for users able to leave ratings and reviews on boardgames.
