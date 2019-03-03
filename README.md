@@ -9,11 +9,6 @@ The apps' front-end uses React, a popular Javascript library for building user i
 The app's back-end architecture features users and boardgames routes with complete CRUD (Create, Read, Update, and Delete) capabilities using RESTful routing. This router also features authentication using bcrypt.
 The boardgame router uses RESTful routing to grab appropriate data, provided by the BoardGameGeek API.
 
-
-## B. Link to deployed app: 
-heroku
-
-
 ```
 Let's Play was built in 4 days by:
 Bryant Cabrera - GitLab Manager/Scrum Master/Documenter
@@ -21,7 +16,19 @@ Abraham Hsu - Scrum Master/API Manager/Designer
 
 ```
 
-## C. App Images
+## B. Link to deployed app: 
+heroku
+
+## C. User Stories
+> As a user, I want to view a list of all the boardgames and their info without having to log in so I can assess whether I should register on the site or not.
+
+> As a user, I want a link in the NavBar to my own profile and a logout link for convenience.
+
+> As a user, I want to add boardgames from the boardgames index and know which ones have been added to my profile already for a better user experience.
+
+> As a user, on my Edit Page, I want to have input fields pre-populated with my current info so that I know what I want to edit.
+
+## D. App Images
 1. Splash Page
     > ![Image of Splash Page](https://i.imgur.com/QqglYvs.png)
 
@@ -38,8 +45,7 @@ Abraham Hsu - Scrum Master/API Manager/Designer
     > ![Image of Individual Boardgame's Show Page](https://i.imgur.com/fbD31Lg.png)
 
 
-
-## D. Technologies Used
+## E. Technologies Used
 > Front-End
     
     1. React
@@ -58,11 +64,11 @@ Abraham Hsu - Scrum Master/API Manager/Designer
     2. PostgreSQL
     3. Flask
     4. Restful Routing
+    5. peewee
 
 > APIs
 
     1. Board Game Geek
-
 
 > Authentication
     
@@ -73,9 +79,18 @@ Abraham Hsu - Scrum Master/API Manager/Designer
     1. Adobe XD
     2. Adobe Photoshop
 
-## E. User Stories
-
 ## F. Getting Started
+###Flask Back-End
+```
+1.  Make sure you have downloaded all dependencies for the flask backend
+    1.  in terminal, cd to your project folder
+    2.  $pip3 install -r requirements.txt
+2.  Run the environment with $ virtualenv .env -p python3
+3.  Make sure to run the flask server with $python app.py
+```
+
+### React Front-End
+```
 1. LOGGING IN: Users are able to register for a new account. 
     > When a user signs up for the first time, user will be presented a user profile page, where they'll fill out his or her name, profile picture, and location.
 
@@ -93,6 +108,7 @@ Abraham Hsu - Scrum Master/API Manager/Designer
     > Available boardgames are viewable by anyone, without the need to register.
     
     > Clicking a boardgame image will redirect user to a boardgame's individual showpage, showing additional information.
+```
 
 ## G. Github workflow
 1.	Deploayed Links
@@ -147,8 +163,7 @@ Abraham Hsu - Scrum Master/API Manager/Designer
         3.	Click send pull request
     2.	DO NOT hit “merge”, Bryant will be handling this.
 
-
-## G. Next Steps
+## H. Next Steps
 1. Unsolved problems:
     - [ ] Search bar needs to match exact characters, including Uppercase. 
     - [ ] Search bar requires users to press "Reset Search" everytime a user wants to perform another search.

@@ -81,8 +81,8 @@ class Boardgame extends Component {
         throw Error()
       }
 
-      const parsedResponse = await response.json();
-      console.log(parsedResponse, ' this is parsedResponse from addtoOwnedGames')
+      await response.json();
+
       this.props.updateUserBoardgames(boardGame);
 
     } catch (err) {

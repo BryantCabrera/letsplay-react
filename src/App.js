@@ -27,28 +27,6 @@ class App extends Component {
     authMessage: ''
   }
 
-  // componentDidMount () {
-  //   this.getBoardgames();
-  // }
-
-  // getBoardgames = async () => {
-  //   try {
-  //     const response = await fetch('https://bgg-json.azurewebsites.net/thing/13');
-
-  //     if (!response.ok){
-  //       throw Error(response.statusText)
-  //     }
-
-  //     const boardgamesParsed = await response.json();
-
-  //     this.setState({
-  //       boardgames: boardgamesParsed
-  //     });
-  //   } catch (err) {
-  //     console.log(err, 'This is error from App.js.');
-  //   }
-  // }
-
   loginUser = async (user) => {
     this.setState({
       loggedUser: user,
@@ -168,7 +146,6 @@ class App extends Component {
   }
   
   render() {
-    const {boardgames} = this.state;
     return (
       <Switch>
         <div className="App">
