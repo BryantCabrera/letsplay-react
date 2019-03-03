@@ -4,6 +4,7 @@ class Login extends Component {
     state = {
         email: '',
         password: '',
+        errorMessage: ''
     }
     onChange = (e) => {
         this.setState({
@@ -12,6 +13,10 @@ class Login extends Component {
     }
 
     onSubmit = async (e) => {
+        this.setState({
+            errorMessage: ''
+        });
+
         e.preventDefault();
         
         const loggedUser = {
@@ -37,6 +42,10 @@ class Login extends Component {
             if (parsedResponse.id) {
                 this.props.loginUser(parsedResponse);
                 this.props.history.push(`/profile/${parsedResponse.id}`);
+            } else {
+                this.setState({
+                    errorMessage: parsedResponse
+                });
             }
 
         } catch (err) {
@@ -51,7 +60,7 @@ class Login extends Component {
             <div className="row">
                 <div className="col-md-8 m-auto">
                 <h1 className="display-4 text-center">Log In</h1>
-                <p className="lead text-center">Ready to Play?</p>
+                {this.state.errorMessage ?  <p className="lead text-center">{this.state.errorMessage}</p> : <p className="lead text-center">Ready to Play?</p>}
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                     <input type="email" className="form-control form-control-lg" placeholder="Email Address" name="email" value={this.state.email} onChange={this.onChange} />

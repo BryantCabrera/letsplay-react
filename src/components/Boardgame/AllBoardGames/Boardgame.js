@@ -82,6 +82,8 @@ class Boardgame extends Component {
       }
 
       const parsedResponse = await response.json();
+      console.log(parsedResponse, ' this is parsedResponse from addtoOwnedGames')
+      this.props.updateUserBoardgames(parsedResponse);
 
     } catch (err) {
       console.log(err, ' this is error from Edit Profile');
@@ -95,17 +97,17 @@ class Boardgame extends Component {
         <Searchbar getBoardgames={this.getBoardgames} search={this.clickSearch} reset={this.resetHandler} change={this.changeHandler} searchBar={this.state.searchBar}/>
         {boardGames.map((boardGame, index) => {
           return (
-            <div class="card" key={index} style={{width: '15rem'}}>
-            <Link to={`/boardgames/${boardGame.id}`}> 
-            <img class="card-img-top" src={boardGame.img_url} alt="boardgame"/>
-            </Link>
-              <div class="allprofiles_card-body">
-                <h5 class="allprofiles__name" >{boardGame.title}</h5>
+            <div className="card" key={index} style={{width: '15rem'}}>
+              <Link to={`/boardgames/${boardGame.id}`}> 
+              <img className="card-img-top" src={boardGame.img_url} alt="boardgame"/>
+              </Link>
+                <div className="allprofiles_card-body">
+                  <h5 className="allprofiles__name" >{boardGame.title}</h5>
 
-                {user.id ?  <div><button onClick={this.addToOwnedGames} id={boardGame.id} class="btn btn-primary">Add to Owned Games</button>
-                </div>: <div></div> }
-              
-              </div>
+                  {user.id ?  <div><button onClick={this.addToOwnedGames} id={boardGame.id} class="btn btn-primary">Add to Owned Games</button>
+                  </div>: <div></div> }
+                
+                </div>
             </div>
           )
         })}
