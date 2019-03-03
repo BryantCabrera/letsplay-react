@@ -50,7 +50,8 @@ class App extends Component {
 
   loginUser = async (user) => {
     this.setState({
-      loggedUser: user
+      loggedUser: user,
+      userToView: user
     });
 
     //grabs user's owned boargames
@@ -70,7 +71,8 @@ class App extends Component {
       const parsedResponse = await response.json();
       if (parsedResponse) {
         this.setState({
-          userBoardgames: parsedResponse
+          userBoardgames: parsedResponse,
+          userToViewBoardgames: parsedResponse
         });
       }
   

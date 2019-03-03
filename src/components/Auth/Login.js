@@ -35,10 +35,9 @@ class Login extends Component {
 
             const parsedResponse = await response.json();
             if (parsedResponse.id) {
+                this.props.loginUser(parsedResponse);
                 this.props.history.push(`/profile/${parsedResponse.id}`);
             }
-
-            this.props.loginUser(parsedResponse);
 
         } catch (err) {
             console.log(err, ' this is error from Login.js');

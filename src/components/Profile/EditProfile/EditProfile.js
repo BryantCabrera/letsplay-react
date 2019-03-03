@@ -117,7 +117,7 @@ class EditProfle extends Component {
                                     <input type="number" minLength="5" maxLength="5" className="form-control form-control-lg" defaultValue={this.props.user.location} name="location" onChange={this.onChange}/>
                                 </div>
                                 <div className="form-group">
-                                    <input type="text" className="form-control form-control-lg" defaultValue={"Img Url"} name="img_url" onChange={this.onChange}/>
+                                    <input type="text" className="form-control form-control-lg" defaultValue={this.props.user.img_url} name="img_url" onChange={this.onChange}/>
                                 </div>
 
                                 <input type="submit" className="btn btn-info btn-block mt-4" />
