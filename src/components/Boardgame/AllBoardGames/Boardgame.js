@@ -61,10 +61,10 @@ class Boardgame extends Component {
     }
   }
 
-  addToOwnedGames = async (e) => {
+  addToOwnedGames = async (boardGame) => {
     const userboardgame = {
       user: this.state.user.id,
-      boardgame: parseInt(e.target.id)
+      boardgame: parseInt(boardGame.id)
     };
     
     try {
@@ -83,7 +83,7 @@ class Boardgame extends Component {
 
       const parsedResponse = await response.json();
       console.log(parsedResponse, ' this is parsedResponse from addtoOwnedGames')
-      this.props.updateUserBoardgames(parsedResponse);
+      this.props.updateUserBoardgames(boardGame);
 
     } catch (err) {
       console.log(err, ' this is error from Edit Profile');
@@ -103,9 +103,17 @@ class Boardgame extends Component {
               </Link>
                 <div className="allprofiles_card-body">
                   <h5 className="allprofiles__name" >{boardGame.title}</h5>
-
-                  {user.id ?  <div><button onClick={this.addToOwnedGames} id={boardGame.id} class="btn btn-primary">Add to Owned Games</button>
-                  </div>: <div></div> }
+                  {user.id ?  
+                    (this.props.userBoardgames.map(boardgame => boardgame.id == boardGame.id)).includes(true) ? 
+                      <div>
+                        <button onClick={() => this.addToOwnedGames(boardGame)} id={boardGame.id} className="btn btn-primary" disabled>Added to Owned Games</button>
+                      </div>
+                      :
+                      <div>
+                        <button onClick={() => this.addToOwnedGames(boardGame)} id={boardGame.id} className="btn btn-primary">Add to Owned Games</button>
+                      </div>
+                    : 
+                    <div></div> }
                 
                 </div>
             </div>
