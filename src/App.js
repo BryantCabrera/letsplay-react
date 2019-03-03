@@ -143,13 +143,20 @@ class App extends Component {
       console.log(err, ' This is error from App.js loginuser().');
     }
   }
+
+  viewLoggedProfile = () => {
+    this.setState({
+      userToView: this.state.loggedUser,
+      userToViewBoardgames: this.state.userBoardgames
+    });
+  }
   
   render() {
     const {boardgames} = this.state;
     return (
       <Switch>
         <div className="App">
-          <Navbar loggedUser={this.state.loggedUser} logoutUser={this.logoutUser} />
+          <Navbar loggedUser={this.state.loggedUser} logoutUser={this.logoutUser} viewLoggedProfile={this.viewLoggedProfile} />
           <Route exact path="/" component={ Landing } />
           <div className="container">
             <Route exact path="/login" component= {(props) =>  <Login {...props} history={this.props.history} loginUser={this.loginUser} /> } />
