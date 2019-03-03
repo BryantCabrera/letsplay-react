@@ -24,6 +24,7 @@ class App extends Component {
     playedGames: [],
     ownedGames: [],
     boardgames: [],
+    authMessage: ''
   }
 
   // componentDidMount () {
@@ -98,12 +99,15 @@ class App extends Component {
       const parsedResponse = await response.json();
 
       if (parsedResponse) {
+        this.setState({
+          loggedUser: {},
+          authMessage: parsedResponse
+        });
+
         this.props.history.push(`/`);
       }
 
-      this.setState({
-        loggedUser: {}
-      });
+      
 
     } catch (err) {
       console.log(err, ' This is error from App.js logoutUser().')
@@ -163,18 +167,18 @@ class App extends Component {
       <Switch>
         <div className="App">
           <Navbar loggedUser={this.state.loggedUser} logoutUser={this.logoutUser} viewLoggedProfile={this.viewLoggedProfile} />
-          <Route exact path="/" component={ Landing } />
+          <Route exact path="/" component={(props) =>  <Landing {...props} history={this.props.history} authMessage={this.state.authMessage} /> } />
           <div className="container">
-            <Route exact path="/login" component= {(props) =>  <Login {...props} history={this.props.history} loginUser={this.loginUser} /> } />
-            <Route exact path="/register" component= {(props) =>  <Register {...props} history={this.props.history} loginUser={this.loginUser} /> } />
+            <Route exact path="/login" component={(props) =>  <Login {...props} history={this.props.history} loginUser={this.loginUser} /> } />
+            <Route exact path="/register" component={(props) =>  <Register {...props} history={this.props.history} loginUser={this.loginUser} /> } />
           </div>
-          <Route exact path="/boardgames" component= {(props) =>  <Boardgame {...props} history={this.props.history} user={this.state.loggedUser}  updateUserBoardgames={this.updateUserBoardgames} /> } />
+          <Route exact path="/boardgames" component={(props) =>  <Boardgame {...props} history={this.props.history} user={this.state.loggedUser}  updateUserBoardgames={this.updateUserBoardgames} /> } />
           <Route exact path="/boardgames/:id" component={ OneBoardGame } />
           <Route exact path="/profiles" component={(props) =>  <AllProfiles {...props} user={this.state.loggedUser} userBoardgames={this.state.userBoardgames} viewProfile={this.viewProfile} /> } />
           <Route exact path="/profile/:id" component={(props) =>  <ProfileShowPage {...props} user={this.state.loggedUser} userBoardgames={this.state.userBoardgames} userToView={this.state.userToView} userToViewBoardgames={this.state.userToViewBoardgames} /> } />
           <Route exact path="/profile/:id/edit" component={(props) =>  <EditProfile {...props} user={this.state.loggedUser} updateUser={this.updateUser} /> } />
-        <Footer />
-      </div>
+          <Footer />
+        </div>
       </Switch>
     );
   }

@@ -13,7 +13,7 @@ class Landing extends Component {
                 <div className="col-md-12 text-center">
                   <h1 className="display-3 mb-4">Let's Play!
                   </h1>
-                  <p className="lead">Discover new board games and connect with other board game enthusiasts</p>
+                  {this.props.authMessage ? <p className="lead">{this.props.authMessage}</p> : <p className="lead">Discover new board games and connect with other board game enthusiasts</p>}
                   <hr />
                   
                   <Link to="/register" className="btn btn-lg btn-info mr-2">Sign Up</Link>
