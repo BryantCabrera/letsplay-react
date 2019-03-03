@@ -63,6 +63,20 @@ img {
 }
 
 /* LAYOUT- LANDING PAGE END */
+.ProfileShowPage__container-box {
+  margin: 10px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 150px;
+}
+.ProfileShowPage__game-title {
+  text-align: center;
+}
+
+.ProfileShowPage__owned-games {
+  text-align: center;
+}
+
 .dark-overlay {
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
