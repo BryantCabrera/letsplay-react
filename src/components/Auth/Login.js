@@ -25,7 +25,7 @@ class Login extends Component {
         };
 
         try {
-            const response = await fetch('http://localhost:8000/api/v1/users/login', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, {
                 method: 'POST',
                 credentials: 'include',
                 body: JSON.stringify(loggedUser),

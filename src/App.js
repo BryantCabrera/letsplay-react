@@ -35,7 +35,7 @@ class App extends Component {
 
     //grabs user's owned boargames
     try {
-      const response = await fetch('http://localhost:8000/api/v1/userboardgames', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/userboardgames`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -62,7 +62,7 @@ class App extends Component {
 
   logoutUser = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/v1/users/logout', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/logout`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -112,7 +112,7 @@ class App extends Component {
 
   viewProfile = async (userToView) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/v1/userboardgames/${userToView.id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/userboardgames/${userToView.id}`, {
         method: 'GET',
         credentials: 'include',
         headers: {

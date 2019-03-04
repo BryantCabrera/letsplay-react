@@ -30,7 +30,7 @@ class EditProfle extends Component {
         };
         
         try {
-            const response = await fetch(`http://localhost:8000/api/v1/users/${this.props.user.id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/${this.props.user.id}`, {
                 method: 'PUT',
                 credentials: 'include',
                 body: JSON.stringify(updatedUser),
@@ -66,7 +66,7 @@ class EditProfle extends Component {
         let authMessage = '';
         //deletes boardgames in userboardgame
         try {
-            const response = await fetch(`http://localhost:8000/api/v1/userboardgames/${this.props.user.id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/userboardgames/${this.props.user.id}`, {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {
@@ -90,7 +90,7 @@ class EditProfle extends Component {
 
         //deletes profile
         try {
-            const response = await fetch(`http://localhost:8000/api/v1/users/${this.props.user.id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/${this.props.user.id}`, {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {

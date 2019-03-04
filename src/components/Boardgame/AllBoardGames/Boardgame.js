@@ -38,7 +38,7 @@ class Boardgame extends Component {
 
   getBoardgames = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/v1/boardgames', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/boardgames`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -68,7 +68,7 @@ class Boardgame extends Component {
     };
     
     try {
-      const response = await fetch(`http://localhost:8000/api/v1/userboardgames`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/userboardgames`, {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(userboardgame),
