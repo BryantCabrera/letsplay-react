@@ -17,7 +17,7 @@ Abraham Hsu - Scrum Master/API Manager/Designer
 ```
 
 ## B. Link to deployed app: 
-heroku
+React Front-End: [https://letsplay-react.herokuapp.com](https://letsplay-react.herokuapp.com) 
 
 ## C. User Stories
 > As a user, I want to view a list of all the boardgames and their info without having to log in so I can assess whether I should register on the site or not.
@@ -78,6 +78,7 @@ heroku
     
     1. Adobe XD
     2. Adobe Photoshop
+    3. Postman
 
 ## F. Getting Started
 ###Flask Back-End
