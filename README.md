@@ -68,7 +68,7 @@ React Front-End: [https://letsplay-react.herokuapp.com](https://letsplay-react.h
 
 > APIs
 
-    1. Board Game Geek
+    1. Board Game Geek: [https://bgg-json.azurewebsites.net/](https://bgg-json.azurewebsites.net/) 
 
 > Authentication
     
